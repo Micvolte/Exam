@@ -23,4 +23,56 @@ for x in range(0, 2):
                 if ((x <= y) or (y == w)) and ((x or z) == w):
                     print(x, y, z, w)
 ~~~
-Ответ: zyxw.
+Ответ: zyxw
+
+## Исмаилов
+### Тип 8
+#### №18491
+
+Ольга составляет 5-⁠буквенные коды из букв О, Л, Ь, Г, А. Каждую букву нужно использовать ровно 1 раз, при этом Ь нельзя ставить первым и нельзя ставить после гласной. Сколько различных кодов может составить Ольга?
+
+~~~
+from itertools import product
+x = 'ОЛЬГА'
+y = 0
+for x in product(x, repeat=5):
+    kod = ''.join(x)
+    if kod.count('О') == 1 and kod.count('Л') == 1 and kod.count('Ь') == 1 and kod.count('Г') == 1 and kod.count('А') == 1 and kod.count('ОЬ') == 0 and kod.count('АЬ') == 0 and kod[0] != "Ь":
+        y += 1
+print(y)
+~~~
+
+Ответ: 48
+
+## Сергеев
+### Тип 8
+#### №37143
+
+~~~
+from itertools import product
+x = "ГЕПАРД"
+y = 0
+for x in product(x, repeat=5):
+    kod = "".join(x)
+    if kod.count('Г') == 1 and kod[0] != 'А' and kod[4] != 'Е':
+        y += 1
+print(y)
+~~~
+
+## Исроилов
+### Тип 8
+#### №59745
+
+~~~
+from itertools import product, count
+x = 'АГИЛМОРТ'
+y = 0
+count = 0
+for x in product(x, repeat=5):
+    kod = ''.join(x)
+    y += 1
+    z = str(y) + ' ' + kod
+    if y % 2 != 0 and kod[0] != 'Г' and kod.count("И") >= 2:
+       count += 1
+print(count)
+~~~
